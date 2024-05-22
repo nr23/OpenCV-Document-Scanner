@@ -287,15 +287,16 @@ class DocScanner(object):
         # apply the perspective transformation
         warped = transform.four_point_transform(orig, screenCnt * ratio)
 
-        # convert the warped image to grayscale
-        gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
+        thresh = warped
+        ## convert the warped image to grayscale
+        #gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
 
-        # sharpen image
-        sharpen = cv2.GaussianBlur(gray, (0,0), 3)
-        sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
+        ## sharpen image
+        #sharpen = cv2.GaussianBlur(gray, (0,0), 3)
+        #sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
 
-        # apply adaptive threshold to get black and white effect
-        thresh = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 15)
+        ## apply adaptive threshold to get black and white effect
+        #thresh = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 15)
 
         # save the transformed image
         basename = os.path.basename(image_path)
